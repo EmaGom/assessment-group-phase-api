@@ -1,0 +1,346 @@
+[
+  {
+    "Name": "Argentina",
+    "HomeStreng": "0.6",
+    "Id": 1,
+    "Offense": "90",
+    "Defence": "82",
+    "Players": [
+      {
+        "Name": "Martinez",
+        "Position": "1",
+        "Overall": "90",
+        "GoalProbability": "0.5",
+        "AssistProbability": "1"
+      },
+      {
+        "Name": "Molina",
+        "Position": "2",
+        "Overall": "90",
+        "GoalProbability": "15",
+        "AssistProbability": "15"
+      },
+      {
+        "Name": "Romero",
+        "Position": "2",
+        "Overall": "90",
+        "GoalProbability": "15",
+        "AssistProbability": "15"
+      },
+      {
+        "Name": "Otamendi",
+        "Position": "2",
+        "Overall": "90",
+        "GoalProbability": "17.5",
+        "AssistProbability": "10"
+      },
+      {
+        "Name": "Taggliafico",
+        "Position": "2",
+        "Overall": "90",
+        "GoalProbability": "17.5",
+        "AssistProbability": "15"
+      },
+      {
+        "Name": "Enzo",
+        "Position": "3",
+        "Overall": "90",
+        "GoalProbability": "20",
+        "AssistProbability": "25"
+      },
+      {
+        "Name": "MacAllister",
+        "Position": "3",
+        "Overall": "90",
+        "GoalProbability": "20",
+        "AssistProbability": "25"
+      },
+      {
+        "Name": "De Paul",
+        "Position": "3",
+        "Overall": "90",
+        "GoalProbability": "20",
+        "AssistProbability": "25"
+      },
+      {
+        "Name": "Di Maria",
+        "Position": "3",
+        "Overall": "90",
+        "GoalProbability": "25",
+        "AssistProbability": "30"
+      },
+      {
+        "Name": "Messi",
+        "Position": "4",
+        "Overall": "90",
+        "GoalProbability": "50",
+        "AssistProbability": "35"
+      },
+      {
+        "Name": "Alvarez",
+        "Position": "4",
+        "Overall": "90",
+        "GoalProbability": "40",
+        "AssistProbability": "25"
+      }
+    ]
+  },
+  {
+    "Name": "France",
+    "HomeStreng": "0.7",
+    "Id": 2,
+    "Offense": "86",
+    "Defence": "78",
+    "Players": [
+      {
+        "Name": "Lloris",
+        "Position": "1",
+        "Overall": "90",
+        "GoalProbability": "0.5",
+        "AssistProbability": "1"
+      },
+      {
+        "Name": "Koundé",
+        "Position": "2",
+        "Overall": "90",
+        "GoalProbability": "15",
+        "AssistProbability": "10"
+      },
+      {
+        "Name": "Varane",
+        "Position": "2",
+        "Overall": "90",
+        "GoalProbability": "15",
+        "AssistProbability": "10"
+      },
+      {
+        "Name": "Upamecano",
+        "Position": "2",
+        "Overall": "90",
+        "GoalProbability": "17.5",
+        "AssistProbability": "10"
+      },
+      {
+        "Name": "Hernández",
+        "Position": "2",
+        "Overall": "90",
+        "GoalProbability": "17.5",
+        "AssistProbability": "15"
+      },
+      {
+        "Name": "Tchouameni",
+        "Position": "3",
+        "Overall": "90",
+        "GoalProbability": "20",
+        "AssistProbability": "25"
+      },
+      {
+        "Name": "Rabiot",
+        "Position": "3",
+        "Overall": "90",
+        "GoalProbability": "20",
+        "AssistProbability": "20"
+      },
+      {
+        "Name": "Dembélé",
+        "Position": "3",
+        "Overall": "90",
+        "GoalProbability": "20",
+        "AssistProbability": "20"
+      },
+      {
+        "Name": "Griezmann",
+        "Position": "3",
+        "Overall": "90",
+        "GoalProbability": "25",
+        "AssistProbability": "60"
+      },
+      {
+        "Name": "Mbappe",
+        "Position": "4",
+        "Overall": "90",
+        "GoalProbability": "50",
+        "AssistProbability": "40"
+      },
+      {
+        "Name": "Giroud",
+        "Position": "4",
+        "Overall": "90",
+        "GoalProbability": "40",
+        "AssistProbability": "50"
+      }
+    ]
+  },
+  {
+    "Name": "Belgium",
+    "HomeStreng": "0.5",
+    "Id": 3,
+    "Offense": "75",
+    "Defence": "70",
+    "Players": [
+      {
+        "Name": "Courtois",
+        "Position": "1",
+        "Overall": "90",
+        "GoalProbability": "1",
+        "AssistProbability": "0.5"
+      },
+      {
+        "Name": "Dendoncker",
+        "Position": "2",
+        "Overall": "90",
+        "GoalProbability": "15",
+        "AssistProbability": "15"
+      },
+      {
+        "Name": "Alderweireld",
+        "Position": "2",
+        "Overall": "90",
+        "GoalProbability": "15",
+        "AssistProbability": "15"
+      },
+      {
+        "Name": "Vertonghen",
+        "Position": "2",
+        "Overall": "90",
+        "GoalProbability": "17.5",
+        "AssistProbability": "15"
+      },
+      {
+        "Name": "Castagne",
+        "Position": "3",
+        "Overall": "90",
+        "GoalProbability": "17.5",
+        "AssistProbability": "15"
+      },
+      {
+        "Name": "Tielemans",
+        "Position": "3",
+        "Overall": "90",
+        "GoalProbability": "20",
+        "AssistProbability": "1"
+      },
+      {
+        "Name": "Witsel",
+        "Position": "3",
+        "Overall": "90",
+        "GoalProbability": "20",
+        "AssistProbability": "25"
+      },
+      {
+        "Name": "Carrasco",
+        "Position": "3",
+        "Overall": "90",
+        "GoalProbability": "20",
+        "AssistProbability": "15"
+      },
+      {
+        "Name": "De Bruyne",
+        "Position": "3",
+        "Overall": "90",
+        "GoalProbability": "25",
+        "AssistProbability": "50"
+      },
+      {
+        "Name": "Batshuayi",
+        "Position": "4",
+        "Overall": "90",
+        "GoalProbability": "30",
+        "AssistProbability": "20"
+      },
+      {
+        "Name": "Hazard",
+        "Position": "4",
+        "Overall": "90",
+        "GoalProbability": "50",
+        "AssistProbability": "35"
+      }
+    ]
+  },
+  {
+    "Name": "Netherlands",
+    "HomeStreng": "0.9",
+    "Id": 4,
+    "Offense": "75",
+    "Defence": "84",
+    "Players": [
+      {
+        "Name": "Noppert",
+        "Position": "1",
+        "Overall": "90",
+        "GoalProbability": "1",
+        "AssistProbability": "0.5"
+      },
+      {
+        "Name": "Timber",
+        "Position": "2",
+        "Overall": "90",
+        "GoalProbability": "15",
+        "AssistProbability": "15"
+      },
+      {
+        "Name": "van Dijk",
+        "Position": "2",
+        "Overall": "90",
+        "GoalProbability": "15",
+        "AssistProbability": "15"
+      },
+      {
+        "Name": "Aké",
+        "Position": "2",
+        "Overall": "90",
+        "GoalProbability": "17.5",
+        "AssistProbability": "15"
+      },
+      {
+        "Name": "Dumfries",
+        "Position": "3",
+        "Overall": "90",
+        "GoalProbability": "17.5",
+        "AssistProbability": "14"
+      },
+      {
+        "Name": "de Roon",
+        "Position": "3",
+        "Overall": "90",
+        "GoalProbability": "20",
+        "AssistProbability": "20"
+      },
+      {
+        "Name": "de Jong",
+        "Position": "3",
+        "Overall": "90",
+        "GoalProbability": "20",
+        "AssistProbability": "60"
+      },
+      {
+        "Name": "Blind",
+        "Position": "3",
+        "Overall": "90",
+        "GoalProbability": "20",
+        "AssistProbability": "30"
+      },
+      {
+        "Name": "Gakpo",
+        "Position": "3",
+        "Overall": "90",
+        "GoalProbability": "25",
+        "AssistProbability": "35"
+      },
+      {
+        "Name": "Depay",
+        "Position": "4",
+        "Overall": "90",
+        "GoalProbability": "50",
+        "AssistProbability": "40"
+      },
+      {
+        "Name": "Bergwijn",
+        "Position": "4",
+        "Overall": "90",
+        "GoalProbability": "35",
+        "AssistProbability": "28"
+      }
+    ]
+  }
+]
