@@ -35,27 +35,24 @@ namespace Assessment.Group.Phase.Managers
 
         public GroupEntity CreateGroup()
         {
-            if (_cacheService.TryGetValue<IList<TeamStatics>>(CacheKeyEnum.TeamStatic, out IList<TeamStatics> teamStatics))
+            if (_cacheService.TryGetValue<IList<TeamStats>>(CacheKeyEnum.TeamStats, out IList<TeamStats> teamStats))
             {
                 var group = new GroupEntity()
                 {
-                    TeamStatics = teamStatics,
-                    Matches = _simulationService.GenerateFixture(teamStatics)
+                    TeamStats = teamStats,
+                    Matches = _simulationService.GenerateFixture(teamStats)
                 };
                 _cacheService.Set<GroupEntity>(CacheKeyEnum.Group, group);
                 return group;
             } else
-            {
-                throw new BadRequestException(ErrorMessages.NoTeamStaticsFound);
-            }
-
+                throw new BadRequestException(ErrorMessages.NoTeamStatsFound);
         }
 
         public GroupEntity GetGroup()
         {
             if (_cacheService.TryGetValue<GroupEntity>(CacheKeyEnum.Group, out GroupEntity group))
             {
-                group.TeamStatics = _teamManager.GetTeamsStatics();
+                group.TeamStats = _teamManager.GetTeamsStats();
                 group.Scorers = _simulationService.GetScorers(group);
                 group.Assistants = _simulationService.GetAssistans(group);
                 return group;

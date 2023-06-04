@@ -14,6 +14,7 @@ namespace Assessment.Group.Phase.Models
         public int Overall { get; set; }
         public int Goals { get; set; }
         public int Assists { get; set; }
+        public string Team { get; set; }
         public double GoalProbability { get; set; }
         public double AssistProbability { get; set; }
 

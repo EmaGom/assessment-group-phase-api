@@ -3,7 +3,7 @@
     public enum CacheKeyEnum
     {
         Teams,
-        TeamStatic,
+        TeamStats,
         Group
     }
 }

@@ -30,20 +30,20 @@ namespace Assessment.Group.Phase.Managers
             _teamRepository = teamRepository;
         }
 
-        public IList<TeamStatics> GetTeamsStatics()
+        public IList<TeamStats> GetTeamsStats()
         {
-            if(_cacheService.TryGetValue<TeamStatics>(CacheKeyEnum.TeamStatic, out IList<TeamStatics> teamStatics))
+            if(_cacheService.TryGetValue<TeamStats>(CacheKeyEnum.TeamStats, out IList<TeamStats> teamStats))
             {
-                teamStatics = teamStatics.OrderByDescending(t => t.Points)
+                teamStats = teamStats.OrderByDescending(t => t.Points)
                          .ThenByDescending(t => t.Difference)
                          .ThenByDescending(t => t.For)
                          .ThenBy(t => t.Against)
                 .ToList();
 
-                _cacheService.Update(CacheKeyEnum.Teams, teamStatics);
-                return teamStatics;
+                _cacheService.Update(CacheKeyEnum.Teams, teamStats);
+                return teamStats;
             }
-            throw new BadRequestException(ErrorMessages.NoTeamStaticsFound);
+            throw new BadRequestException(ErrorMessages.NoTeamStatsFound);
         }
 
         public IList<Team> SetTeams()
@@ -53,7 +53,7 @@ namespace Assessment.Group.Phase.Managers
                 return  _teamRepository.GetTeams();
             });
 
-            var teamStatics = new List<TeamStatics>();
+            var teamStats = new List<TeamStats>();
             if (teams.Any())
             {
                 var teamsInformation = _readerService.Read();
@@ -65,7 +65,7 @@ namespace Assessment.Group.Phase.Managers
                     team.Defence = teamInformation.Defence;
                     team.HomeStreng = teamInformation.HomeStreng;
 
-                    teamStatics.Add(new TeamStatics()
+                    teamStats.Add(new TeamStats()
                     {
                         Team = team,
                         TeamId = team.Id
@@ -73,7 +73,7 @@ namespace Assessment.Group.Phase.Managers
                 }
             }
             _cacheService.Set(CacheKeyEnum.Teams, teams);
-            _cacheService.Set(CacheKeyEnum.TeamStatic, teamStatics);
+            _cacheService.Set(CacheKeyEnum.TeamStats, teamStats);
 
             return teams;
         }

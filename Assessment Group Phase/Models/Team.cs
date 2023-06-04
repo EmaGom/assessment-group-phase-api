@@ -13,7 +13,7 @@ namespace Assessment.Group.Phase.Models
         public double? Offense { get; set; }
         public double? Defence { get; set; }
         public double? HomeStreng { get; set; }
-        public IList<TeamStatics> TeamStatics { get; set; }
+        public IList<TeamStats> TeamStats { get; set; }
         [NotMapped]
         public double Overall => (Offense.GetValueOrDefault() + Defence.GetValueOrDefault()) / 2;
         [NotMapped]

@@ -16,12 +16,12 @@ namespace Assessment.Group.Phase.Repositories
         public IList<GroupEntity> GetGroupsHistory(int last)
         {
             return _context.Groups.AsNoTracking().OrderByDescending(t => t.Id)
-                                .Take(last).Include(g => g.TeamStatics).ThenInclude(ts => ts.Team).ToList();
+                                .Take(last).Include(g => g.TeamStats).ThenInclude(ts => ts.Team).ToList();
         }
 
         public GroupEntity SaveGroup(GroupEntity group)
         {
-            foreach (var teamStatic in group.TeamStatics)
+            foreach (var teamStatic in group.TeamStats)
                 _context.Entry(teamStatic.Team).State = EntityState.Unchanged;
 
             _context.Groups.Add(group);

@@ -3,81 +3,52 @@ using Assessment.Group.Phase.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System;
+using Assessment.Group.Phase.Models.Exceptions;
 
 namespace Assessment.Group.Phase.Helpers
 {
     public class SimulationServices : ISimulationService
     {
-        public IList<Match> GenerateFixture(IList<TeamStatics> teamStatics)
+        public IList<Match> GenerateFixture(IList<TeamStats> teamStats)
         {
-            // Improve this..
-            var fixture = new List<Match>();
+            IList<Match> fixture = new List<Match>();
+            int rounds = teamStats.Count() - 1;
 
-            fixture.Add(new Match()
+            //Randomly order teams to change home strength in each simulation
+            var random = new Random();
+            teamStats = teamStats.OrderBy(t => random.Next()).ToList();
+            for (int homeTeamIndex = 0; homeTeamIndex < teamStats.Count(); homeTeamIndex++)
             {
-                HomeTeamStatics = teamStatics[0],
-                AwayTeamStatics = teamStatics[1],
-                MatchDay = 1
-            });
-
-            fixture.Add(new Match()
-            {
-                HomeTeamStatics = teamStatics[2],
-                AwayTeamStatics = teamStatics[3],
-                MatchDay = 1
-            });
-
-            fixture.Add(new Match()
-            {
-                HomeTeamStatics = teamStatics[1],
-                AwayTeamStatics = teamStatics[2],
-                MatchDay = 2
-            });
-
-            fixture.Add(new Match()
-            {
-                HomeTeamStatics = teamStatics[0],
-                AwayTeamStatics = teamStatics[3],
-                MatchDay = 2
-            });
-
-            fixture.Add(new Match()
-            {
-                HomeTeamStatics = teamStatics[0],
-                AwayTeamStatics = teamStatics[2],
-                MatchDay = 3
-            });
-
-            fixture.Add(new Match()
-            {
-                HomeTeamStatics = teamStatics[1],
-                AwayTeamStatics = teamStatics[3],
-                MatchDay = 3
-            });
+                var matchDay = 1;
+                var homeTeam = teamStats[homeTeamIndex];
+                for(int awayTeamIndex = homeTeamIndex + 1; awayTeamIndex < teamStats.Count(); awayTeamIndex++)
+                {
+                    var awayTeam = teamStats[awayTeamIndex];
+                    fixture.Add(GetMatch(fixture, matchDay, rounds, homeTeam, awayTeam));
+                    matchDay++;
+                }
+            }
             return fixture;
         }
-        private void RotateTeams(IList<TeamStatics> teamStatics)
-        {
-            // Rotate teams by moving the last team to the second position
-            TeamStatics lastTeam = teamStatics[teamStatics.Count - 1];
-            teamStatics.RemoveAt(teamStatics.Count - 1);
-            teamStatics.Insert(1, lastTeam);
-        }
+
         public void SimulateMatch(Match match)
         {
             var random = new Random();
 
-            match.HomeScore = random.Next(0, Convert.ToInt32(Math.Round(match.HomeTeamStatics.Team.SimulationStrengh + match.HomeTeamStatics.Team.HomeStreng.GetValueOrDefault())));
-            match.AwayScore = random.Next(0, Convert.ToInt32(Math.Round(match.AwayTeamStatics.Team.SimulationStrengh)));
+            match.HomeScore = random.Next(0, Convert.ToInt32(Math.Round(match.HomeTeamStats.Team.SimulationStrengh + match.HomeTeamStats.Team.HomeStreng.GetValueOrDefault())));
+            match.AwayScore = random.Next(0, Convert.ToInt32(Math.Round(match.AwayTeamStats.Team.SimulationStrengh)));
 
-            UpdateStatics(match);
+            UpdateStats(match);
         }
         public IList<Player> GetScorers(GroupEntity group)
         {
             var scorers = new List<Player>();
-            foreach (var teamStatics in group.TeamStatics)
+            foreach (var teamStat in group.TeamStats)
             {
-                var scorersTeam = teamStatics.Team.Players.Where(p => p.Goals > 0).ToList();
+                var scorersTeam = teamStat.Team.Players.Where(p => p.Goals > 0).ToList();
+                foreach (var player in scorersTeam)
+                    player.Team = teamStat.Team.Name;
+
                 scorers.AddRange(scorersTeam);
             }
 
@@ -86,15 +57,45 @@ namespace Assessment.Group.Phase.Helpers
         public IList<Player> GetAssistans(GroupEntity group)
         {
             var scorers = new List<Player>();
-            foreach (var teamStatics in group.TeamStatics)
+            foreach (var teamStat in group.TeamStats)
             {
-                var scorersTeam = teamStatics.Team.Players.Where(p => p.Assists > 0).ToList();
-                scorers.AddRange(scorersTeam);
+                var assistantsTeam = teamStat.Team.Players.Where(p => p.Assists > 0).ToList();
+                foreach (var player in assistantsTeam)
+                    player.Team = teamStat.Team.Name;
+                scorers.AddRange(assistantsTeam);
             }
 
             return scorers.OrderByDescending(s => s.Assists).Take(10).ToList();
         }
-        private void UpdateStatics(Match match)
+
+        private Match GetMatch(IList<Match> fixture, int matchDay, int rounds, TeamStats homeTeam, TeamStats awayTeam)
+        {
+            while (matchDay <= rounds)
+            {
+                if (AreTeamsAvailablesForMatchDay(fixture, homeTeam, awayTeam, matchDay))
+                {
+                    return new Match()
+                    {
+                        AwayTeamStats = awayTeam,
+                        HomeTeamStats = homeTeam,
+                        MatchDay = matchDay
+                    };
+                }
+                matchDay++;
+            }
+            throw new BadRequestException(ErrorMessages.NoMatchDayFound);
+        }
+        private bool AreTeamsAvailablesForMatchDay(IList<Match> fixture, TeamStats teamHome, TeamStats teamAway, int matchDay)
+        {
+
+            var teamHomeAvailable = fixture.Where(f => f.MatchDay == matchDay &&
+                                  (f.HomeTeamStats == teamHome || f.AwayTeamStats == teamHome)).Count() > 0 ? false : true;
+            var teamAwayAvailable = fixture.Where(f => f.MatchDay == matchDay &&
+                                  (f.HomeTeamStats == teamAway || f.AwayTeamStats == teamAway)).Count() > 0 ? false : true;
+
+            return teamHomeAvailable && teamAwayAvailable;
+        }
+        private void UpdateStats(Match match)
         {
             ResultPointsEnum homeResult, awayResult;
             if (match.HomeScore > match.AwayScore)
@@ -114,43 +115,41 @@ namespace Assessment.Group.Phase.Helpers
 
             }
 
-            UpdateTeamStatics(match.HomeTeamStatics, homeResult, match.HomeScore, match.AwayScore);
-            UpdateTeamStatics(match.AwayTeamStatics, awayResult, match.AwayScore, match.HomeScore);
+            UpdateTeamStats(match.HomeTeamStats, homeResult, match.HomeScore, match.AwayScore);
+            UpdateTeamStats(match.AwayTeamStats, awayResult, match.AwayScore, match.HomeScore);
         }
-
-        private void UpdateTeamStatics(TeamStatics teamStatics, ResultPointsEnum result, int forGoals, int againstGoals)
+        private void UpdateTeamStats(TeamStats teamStats, ResultPointsEnum result, int forGoals, int againstGoals)
         {
-            teamStatics.Points = ((int)result);
+            teamStats.Points += ((int)result);
 
             switch (result)
             {
                 case ResultPointsEnum.Win:
-                    teamStatics.Win += 1;
+                    teamStats.Win += 1;
                     break;
                 case ResultPointsEnum.Draw:
-                    teamStatics.Draw += 1;
+                    teamStats.Draw += 1;
                     break;
                 case ResultPointsEnum.Loss:
-                    teamStatics.Loss += 1;
+                    teamStats.Loss += 1;
                     break;
 
             }
 
-            teamStatics.For += forGoals;
-            teamStatics.Against -= againstGoals;
-            teamStatics.Difference = teamStatics.For + teamStatics.Against;
-            teamStatics.Played += 1;
+            teamStats.For += forGoals;
+            teamStats.Against -= againstGoals;
+            teamStats.Difference = teamStats.For + teamStats.Against;
+            teamStats.Played += 1;
 
             if(forGoals > 0)
-                UpdatePlayerStatics(teamStatics.Team, forGoals);
+                UpdatePlayerStats(teamStats.Team, forGoals);
         }
-        private void UpdatePlayerStatics(Team team, int goals)
+        private void UpdatePlayerStats(Team team, int goals)
         {
             for (int i = 0; i < goals; i++)
             {
                 var random = new Random();
                 var value = random.NextDouble() * 100;
-
                 // Goal
                 var closestPlayerProbability = 100.0;
                 var closestPlayer = team.Players[0];

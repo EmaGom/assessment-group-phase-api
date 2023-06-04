@@ -10,28 +10,28 @@
         "Name": "Martinez",
         "Position": "1",
         "Overall": "90",
-        "GoalProbability": "0.5",
-        "AssistProbability": "1"
+        "GoalProbability": "0.1",
+        "AssistProbability": "0.5"
       },
       {
         "Name": "Molina",
         "Position": "2",
         "Overall": "90",
-        "GoalProbability": "15",
-        "AssistProbability": "15"
+        "GoalProbability": "0.2",
+        "AssistProbability": "1"
       },
       {
         "Name": "Romero",
         "Position": "2",
         "Overall": "90",
-        "GoalProbability": "15",
-        "AssistProbability": "15"
+        "GoalProbability": "5",
+        "AssistProbability": "5"
       },
       {
         "Name": "Otamendi",
         "Position": "2",
         "Overall": "90",
-        "GoalProbability": "17.5",
+        "GoalProbability": "10",
         "AssistProbability": "10"
       },
       {
@@ -45,7 +45,7 @@
         "Name": "Enzo",
         "Position": "3",
         "Overall": "90",
-        "GoalProbability": "20",
+        "GoalProbability": "15",
         "AssistProbability": "25"
       },
       {
@@ -53,20 +53,20 @@
         "Position": "3",
         "Overall": "90",
         "GoalProbability": "20",
-        "AssistProbability": "25"
+        "AssistProbability": "28"
       },
       {
         "Name": "De Paul",
         "Position": "3",
         "Overall": "90",
-        "GoalProbability": "20",
-        "AssistProbability": "25"
+        "GoalProbability": "28",
+        "AssistProbability": "30"
       },
       {
         "Name": "Di Maria",
         "Position": "3",
         "Overall": "90",
-        "GoalProbability": "25",
+        "GoalProbability": "32",
         "AssistProbability": "30"
       },
       {
@@ -96,21 +96,21 @@
         "Name": "Lloris",
         "Position": "1",
         "Overall": "90",
-        "GoalProbability": "0.5",
-        "AssistProbability": "1"
+        "GoalProbability": "0.1",
+        "AssistProbability": "0.5"
       },
       {
         "Name": "Koundé",
         "Position": "2",
         "Overall": "90",
-        "GoalProbability": "15",
-        "AssistProbability": "10"
+        "GoalProbability": "0.2",
+        "AssistProbability": "1"
       },
       {
         "Name": "Varane",
         "Position": "2",
         "Overall": "90",
-        "GoalProbability": "15",
+        "GoalProbability": "10",
         "AssistProbability": "10"
       },
       {
@@ -124,7 +124,7 @@
         "Name": "Hernández",
         "Position": "2",
         "Overall": "90",
-        "GoalProbability": "17.5",
+        "GoalProbability": "19",
         "AssistProbability": "15"
       },
       {
@@ -138,8 +138,8 @@
         "Name": "Rabiot",
         "Position": "3",
         "Overall": "90",
-        "GoalProbability": "20",
-        "AssistProbability": "20"
+        "GoalProbability": "22",
+        "AssistProbability": "40"
       },
       {
         "Name": "Dembélé",
@@ -182,22 +182,22 @@
         "Name": "Courtois",
         "Position": "1",
         "Overall": "90",
-        "GoalProbability": "1",
+        "GoalProbability": "0.1",
         "AssistProbability": "0.5"
       },
       {
         "Name": "Dendoncker",
         "Position": "2",
         "Overall": "90",
-        "GoalProbability": "15",
-        "AssistProbability": "15"
+        "GoalProbability": "0.2",
+        "AssistProbability": "1"
       },
       {
         "Name": "Alderweireld",
         "Position": "2",
         "Overall": "90",
-        "GoalProbability": "15",
-        "AssistProbability": "15"
+        "GoalProbability": "10",
+        "AssistProbability": "10"
       },
       {
         "Name": "Vertonghen",
@@ -268,22 +268,22 @@
         "Name": "Noppert",
         "Position": "1",
         "Overall": "90",
-        "GoalProbability": "1",
+        "GoalProbability": "0.1",
         "AssistProbability": "0.5"
       },
       {
         "Name": "Timber",
         "Position": "2",
         "Overall": "90",
-        "GoalProbability": "15",
-        "AssistProbability": "15"
+        "GoalProbability": "0.2",
+        "AssistProbability": "1"
       },
       {
         "Name": "van Dijk",
         "Position": "2",
         "Overall": "90",
-        "GoalProbability": "15",
-        "AssistProbability": "15"
+        "GoalProbability": "10",
+        "AssistProbability": "10"
       },
       {
         "Name": "Aké",

@@ -5,7 +5,7 @@ namespace Assessment.Group.Phase.Helpers
 {
     public interface ISimulationService
     {
-        IList<Match> GenerateFixture(IList<TeamStatics> teamStatics);
+        IList<Match> GenerateFixture(IList<TeamStats> teamStats);
         void SimulateMatch(Match match);
         IList<Player> GetScorers(GroupEntity group);
         IList<Player> GetAssistans(GroupEntity group);

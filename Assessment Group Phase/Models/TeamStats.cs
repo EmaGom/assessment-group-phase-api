@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Assessment.Group.Phase.Models
 {
-    [Table("TeamStatics")]
-    public class TeamStatics
+    [Table("TeamStats")]
+    public class TeamStats
     {
         [Key]
         public int Id { get; set; }

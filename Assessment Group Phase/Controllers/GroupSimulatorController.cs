@@ -55,7 +55,7 @@ namespace Assessment.Group.Phase.Controllers
         }
 
         /// <summary>
-        /// Save group with team statics
+        /// Save group with team stats
         /// </summary>
         /// <returns>GroupId</returns>
         [HttpPost]

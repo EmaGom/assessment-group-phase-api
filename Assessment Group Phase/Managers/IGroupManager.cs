@@ -6,7 +6,7 @@ namespace Assessment.Group.Phase.Managers
     public interface IGroupManager
     {
         /// <summary>
-        /// Check if exists a group in cache and return it with the Team Statics and the Scorers
+        /// Check if exists a group in cache and return it with the Team Stats and the Scorers
         /// </summary>
         /// <returns>Group</returns>
         GroupEntity GetGroup();
@@ -25,7 +25,7 @@ namespace Assessment.Group.Phase.Managers
         IList<Match> SimulateMatchDay(int matchDay);
 
         /// <summary>
-        /// Save a group into the database
+        /// Save a group into the database, with its team stats related
         /// </summary>
         /// <param name="group">The group to be saved</param>
         /// <returns>Group updated with Id</returns>

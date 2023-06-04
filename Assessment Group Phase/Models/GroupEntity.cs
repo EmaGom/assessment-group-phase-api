@@ -9,7 +9,7 @@ namespace Assessment.Group.Phase.Models
     {
         [Key]
         public int Id { get; set; }
-        public IList<TeamStatics> TeamStatics { get; set; }
+        public IList<TeamStats> TeamStats { get; set; }
         public IList<Match> Matches { get; set; }
         public IList<Player> Scorers { get; set; }
         public IList<Player> Assistants { get; set; }
